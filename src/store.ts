@@ -1,10 +1,12 @@
-import {legacy_createStore} from "redux";
+import {applyMiddleware, legacy_createStore} from "redux";
 import reducers from "./ducks";
 import {composeWithDevTools} from "@redux-devtools/extension";
 import {getUserLanguage} from "./utils/utils.ts";
+import storageMiddleware from "./middlewares/storageMiddleware.ts";
 
 export interface appInfo {
     userLanguage: string,
+    overlayClosed: boolean,
 }
 
 export interface IMainStore {
@@ -14,7 +16,8 @@ export interface IMainStore {
 const getInitialStore = (): IMainStore => {
     return {
         appInfo: {
-            userLanguage: checkStorageForLang()
+            userLanguage: checkStorageForLang(),
+            overlayClosed: false,
         }
     }
 }
@@ -22,7 +25,7 @@ const getInitialStore = (): IMainStore => {
 export const mainStore = legacy_createStore(
     reducers,
     getInitialStore(),
-    composeWithDevTools()
+    composeWithDevTools(applyMiddleware(storageMiddleware as any))
 )
 
 function checkStorageForLang() {

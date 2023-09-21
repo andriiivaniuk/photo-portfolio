@@ -2,6 +2,8 @@
 // @ts-ignore
 import GlobalStyle from "./assets/reset.js"
 import Router from "./Router.tsx";
+import WelcomeOverlay from "./components/WelcomeOverlay/WelcomeOverlay.tsx";
+import Header from "./components/Header/Header.tsx";
 
 function App() {
 
@@ -9,6 +11,8 @@ function App() {
       <div className="App">
           <GlobalStyle/>
 
+          <WelcomeOverlay />
+          <Header />
           <Router />
       </div>
   )

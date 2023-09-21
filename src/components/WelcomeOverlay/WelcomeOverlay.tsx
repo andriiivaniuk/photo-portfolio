@@ -1,8 +1,9 @@
 import {ProceedButton, WelcomePhrase, WelcomeStyled} from "./WelcomeStyled.ts";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {IMainStore} from "../../store.ts";
 import {WelcomeOverlayTexts} from "./WelcomeOverlayTexts.ts";
 import {useEffect, useState} from "react";
+import {setOverlayClosed} from "../../ducks/appInfo";
 
 
 export const WelcomeOverlay = () => {
@@ -14,6 +15,8 @@ export const WelcomeOverlay = () => {
     const [btnOpacity, setBtnOpacity] = useState(0);
     const [btnShown, setBtnShown] = useState(false);
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
             fadeInElement(setPhraseOpacity, () => setPhraseShown(true));
     }, []);
@@ -24,11 +27,17 @@ export const WelcomeOverlay = () => {
     }, [phraseShown]);
 
     return (
+        isOverlayShown &&
         <WelcomeStyled opacity = {overlayOpacity}>
             <WelcomePhrase opacity = {phraseOpacity}>
                 { WelcomeOverlayTexts.welcome[lang]}
             </WelcomePhrase>
-            <ProceedButton opacity = {btnOpacity} onClick = {() => onOpenClick(setOverlayOpacity, () => setOverlayShown(true),)}>
+            <ProceedButton opacity = {btnOpacity} onClick = {
+                () => onOpenClick(
+                    setOverlayOpacity, () => {
+                        setOverlayShown(false);
+                        dispatch(setOverlayClosed());
+                    })}>
                 { WelcomeOverlayTexts.btnText[lang]}
             </ProceedButton>
         </WelcomeStyled>
@@ -40,7 +49,6 @@ function fadeInElement(opacityStateUpdater: Function, onComplete: Function) {
         if (opacity.value < 1) {
             opacity.value += 0.1;
             opacityStateUpdater(opacity.value);
-            console.log("opacity increase");
         } else {
             clearInterval(interval);
             onComplete();
@@ -48,7 +56,7 @@ function fadeInElement(opacityStateUpdater: Function, onComplete: Function) {
     }
 
     let opacity = {value: 0}
-    const interval = setInterval(() => callback(opacity), 100);
+    const interval = setInterval(() => callback(opacity), 50);
 }
 
 function onOpenClick(setOverlayOpacity: Function, setOverlayShown: Function) {
@@ -60,7 +68,6 @@ function fadeOutElement(opacityStateUpdater: Function, onComplete: Function) {
         if (opacity.value > 0) {
             opacity.value -= 0.1;
             opacityStateUpdater(opacity.value);
-            console.log("opacity increase");
         } else {
             clearInterval(interval);
             onComplete();

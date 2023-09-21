@@ -10,6 +10,8 @@ export const WelcomeStyled = styled.div< {opacity: number}>`
   flex-direction: column;
   align-items: center;
   background-color: bisque;
+  transition: 0.5s ease opacity;
+  z-index: 5;
 `
 export const WelcomePhrase = styled.div< {opacity: number}>`
   padding: 1rem;
@@ -28,5 +30,5 @@ export const ProceedButton = styled.div<{ opacity: number }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: 0.6s ease-in opacity;
+  transition: 0.5s ease-in-out opacity;
 `
