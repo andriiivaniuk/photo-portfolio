@@ -1,4 +1,5 @@
 import {styled} from "styled-components";
+import {DESIGN_CONST} from "../../assets/designConstants.ts";
 
 export const WelcomeStyled = styled.div< {opacity: number}>`
   opacity: ${props => props.opacity};
@@ -9,7 +10,7 @@ export const WelcomeStyled = styled.div< {opacity: number}>`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: bisque;
+  background-color: ${DESIGN_CONST.overlay.bgColor};
   transition: 0.5s ease opacity;
   z-index: 5;
 `
@@ -22,7 +23,8 @@ export const ProceedButton = styled.div<{ opacity: number }>`
   opacity: ${props => props.opacity};
   position: relative;
   padding: 1rem;
-  background-color: aquamarine;
+  background-color: ${DESIGN_CONST.button.bgColor};
+  border: 3px solid ${DESIGN_CONST.button.borderColor};
   cursor: pointer;
   border-radius: 10px;
   height: 2rem;

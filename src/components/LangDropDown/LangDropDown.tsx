@@ -5,9 +5,9 @@ import {
 } from "react-redux"
 import {
     LangDropDownStyled,
-    SelectedLang,
+    LangMenu,
     OptionsList,
-    LanguageOption
+    LanguageOption, SelectedLang
 } from "./LangDropDownStyled";
 import { LANGUAGES } from "../../config/configs";
 import {setUserLanguage} from "../../ducks/appInfo/appInfoActions.ts";
@@ -22,9 +22,11 @@ export const LangDropDown = () => {
     return (
         <LangDropDownStyled onClick={() => {
             setIsOptionsShown(!isOptionsShown)
-        }}>
-            <SelectedLang>
-                {currentLang}
+        }} onBlur = {() => setIsOptionsShown(false)}>
+            <LangMenu>
+                <SelectedLang>
+                    {currentLang}
+                </SelectedLang>
                 {isOptionsShown &&
                     <OptionsList>
                         {LANGUAGES.map((option) =>
@@ -35,7 +37,7 @@ export const LangDropDown = () => {
                             </LanguageOption>
                         )}
                     </OptionsList>}
-            </SelectedLang>
+            </LangMenu>
         </LangDropDownStyled>
     );
 }

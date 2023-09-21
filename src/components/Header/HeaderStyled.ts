@@ -1,9 +1,10 @@
 import {styled} from "styled-components";
+import {DESIGN_CONST} from "../../assets/designConstants.ts";
 
 export const HeaderStyled = styled.nav`
   display: flex;
   width: 100%;
-  background-color: cadetblue;
+  background-color: ${DESIGN_CONST.panel.bgColor};
   padding: 1rem;
 `
 

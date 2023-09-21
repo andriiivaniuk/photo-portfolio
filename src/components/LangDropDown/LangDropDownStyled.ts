@@ -1,27 +1,36 @@
 import styled from "styled-components";
+import {DESIGN_CONST} from "../../assets/designConstants.ts";
 
 export const LangDropDownStyled = styled.div`
-  //border: 2px solid
+  //border: 2px solid black;
   border-radius: 4px;
   cursor: pointer;
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
 `
-export const SelectedLang = styled.span`
+export const LangMenu = styled.div`
   position: relative;
   text-transform: uppercase;
   z-index: 0;
 `
 
+export const SelectedLang = styled.span`
+  padding: 0.3rem;
+  border: ${DESIGN_CONST.dropDown.borderColor} 2px solid;
+  border-radius: 5px;
+  background-color: ${DESIGN_CONST.dropDown.iconBgColor};
+`
+
 export const OptionsList = styled.ul`
   position: absolute;
-  top: 2.5rem;
-  left: -0.7rem;
+  top: 1.8rem;
+  left: -0.3rem;
   display: flex;
   flex-direction: column;
-  background-color: rgba(1, 1, 1, 0.8);
-  //border: 3px solid
+  background-color: ${DESIGN_CONST.dropDown.bgColor};
+  border: ${DESIGN_CONST.dropDown.borderColor} 3px solid;
+  border-radius: 7px;
 `
 
 export const LanguageOption = styled.li`

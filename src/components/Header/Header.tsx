@@ -22,6 +22,11 @@ export const Header = () => {
                         {HeaderTexts.portfolio[lang]}
                     </Link>
                 </HeaderListItem>
+                <HeaderListItem>
+                    <Link to={"contacts"}>
+                        {HeaderTexts.contacts[lang]}
+                    </Link>
+                </HeaderListItem>
 
                 <LangDropDown />
             </HeaderList>

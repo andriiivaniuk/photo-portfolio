@@ -5,7 +5,7 @@ export const HeaderTexts: any = {
     },
     portfolio: {
         EN: "See Portfolio",
-        UA: "Дивитись портфоліо"
+        UA: "Портфоліо"
     },
     contacts: {
         EN: "Contacts",
