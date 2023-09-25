@@ -4,10 +4,13 @@ import {DESIGN_CONST} from "../../assets/designConstants.ts";
 export const LangDropDownStyled = styled.div`
   //border: 2px solid black;
   border-radius: 4px;
-  cursor: pointer;
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
+
+  @media only screen and (max-width: 500px) {
+    flex-grow: 0;
+  }
 `
 export const LangMenu = styled.div`
   position: relative;
@@ -20,6 +23,7 @@ export const SelectedLang = styled.span`
   border: ${DESIGN_CONST.dropDown.borderColor} 2px solid;
   border-radius: 5px;
   background-color: ${DESIGN_CONST.dropDown.iconBgColor};
+  cursor: pointer;
 `
 
 export const OptionsList = styled.ul`

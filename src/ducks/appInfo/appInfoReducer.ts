@@ -1,6 +1,7 @@
-import {IAction, SET_OVERLAY_CLOSED, SET_USER_LANGUAGE} from "./appInfoActions.ts";
+import {IAction, SET_OVERLAY_CLOSED, SET_USER_LANGUAGE, TOGGLE_MOBILE_OVERLAY_MENU} from "./appInfoActions.ts";
+import {appInfo} from "../../store.ts";
 
-export const appInfoReducer = (state = {}, action: IAction) => {
+export const appInfoReducer = (state: appInfo = {} as appInfo, action: IAction) => {
     switch (action.type) {
         case SET_OVERLAY_CLOSED:
             return {
@@ -11,6 +12,12 @@ export const appInfoReducer = (state = {}, action: IAction) => {
             return {
                 ...state,
                 userLanguage: action.payload
+            }
+        }
+        case TOGGLE_MOBILE_OVERLAY_MENU: {
+            return {
+                ...state,
+                mobileOverlayMenuShown: !state.mobileOverlayMenuShown
             }
         }
         default:

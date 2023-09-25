@@ -7,6 +7,7 @@ import storageMiddleware from "./middlewares/storageMiddleware.ts";
 export interface appInfo {
     userLanguage: string,
     overlayClosed: boolean,
+    mobileOverlayMenuShown: boolean
 }
 
 export interface IMainStore {
@@ -18,6 +19,7 @@ const getInitialStore = (): IMainStore => {
         appInfo: {
             userLanguage: checkStorageForLang(),
             overlayClosed: false,
+            mobileOverlayMenuShown: false
         }
     }
 }

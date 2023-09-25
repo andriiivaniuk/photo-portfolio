@@ -22,7 +22,7 @@ export const LangDropDown = () => {
     return (
         <LangDropDownStyled onClick={() => {
             setIsOptionsShown(!isOptionsShown)
-        }} onBlur = {() => setIsOptionsShown(false)}>
+        }}>
             <LangMenu>
                 <SelectedLang>
                     {currentLang}

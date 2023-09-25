@@ -29,8 +29,20 @@ export const ProceedButton = styled.div<{ opacity: number }>`
   border-radius: 10px;
   height: 2rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: 0.5s ease-in-out opacity;
+`
+export const ArrowElem = styled.div`
+  @keyframes animation {
+    0% {padding-left: 0.2rem;}
+    50% {padding-left: 0.7rem;}
+    100% {padding-left: 0.2rem;}
+  }
+  
+  animation: animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  width: 2rem;
+  text-align: center;
 `

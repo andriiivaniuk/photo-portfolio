@@ -1,11 +1,13 @@
 import {appInfoReducer} from "./appInfoReducer.ts";
 
 import {
-    setOverlayClosed
+    setOverlayClosed,
+    toggleMobileOverlayMenu
 } from "./appInfoActions.ts";
 
 export {
     appInfoReducer,
 
     setOverlayClosed,
+    toggleMobileOverlayMenu
 };

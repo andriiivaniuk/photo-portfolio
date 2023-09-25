@@ -1,4 +1,4 @@
-import {ProceedButton, WelcomePhrase, WelcomeStyled} from "./WelcomeStyled.ts";
+import {ArrowElem, ProceedButton, WelcomePhrase, WelcomeStyled} from "./WelcomeStyled.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {IMainStore} from "../../store.ts";
 import {WelcomeOverlayTexts} from "./WelcomeOverlayTexts.ts";
@@ -38,7 +38,12 @@ export const WelcomeOverlay = () => {
                         setOverlayShown(false);
                         dispatch(setOverlayClosed());
                     })}>
-                { WelcomeOverlayTexts.btnText[lang]}
+                <span>
+                    { WelcomeOverlayTexts.btnText[lang] }
+                </span>
+                <ArrowElem>
+                    ➔
+                </ArrowElem>
             </ProceedButton>
         </WelcomeStyled>
     )
