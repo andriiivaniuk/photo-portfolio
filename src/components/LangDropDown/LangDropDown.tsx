@@ -10,21 +10,19 @@ import {
     LanguageOption, SelectedLang
 } from "./LangDropDownStyled";
 import { LANGUAGES } from "../../config/configs";
-import {setUserLanguage} from "../../ducks/appInfo/appInfoActions.ts";
+import {setLangDropDownState, setUserLanguage} from "../../ducks/appInfo";
 import {IMainStore} from "../../store.ts";
 
 export const LangDropDown = () => {
 
     const currentLang = useSelector((state: IMainStore) => state.appInfo.userLanguage);
-    const [isOptionsShown, setIsOptionsShown] = useState(false);
+    const isOptionsShown = useSelector((state: IMainStore) => state.appInfo.isLangDropDownOpen)
     const dispatch = useDispatch();
 
     return (
-        <LangDropDownStyled onClick={() => {
-            setIsOptionsShown(!isOptionsShown)
-        }}>
+        <LangDropDownStyled>
             <LangMenu>
-                <SelectedLang>
+                <SelectedLang onClick={() => dispatch(setLangDropDownState(!isOptionsShown))}>
                     {currentLang}
                 </SelectedLang>
                 {isOptionsShown &&
@@ -32,7 +30,12 @@ export const LangDropDown = () => {
                         {LANGUAGES.map((option) =>
                             <LanguageOption
                                 key={option + "lang"}
-                                onClick={() => dispatch(setUserLanguage(option))}>
+                                onClick={
+                                    () => {
+                                        dispatch(setUserLanguage(option));
+                                        dispatch(setLangDropDownState(false));
+                                    }
+                                }>
                                 {option}
                             </LanguageOption>
                         )}

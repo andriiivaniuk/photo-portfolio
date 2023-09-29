@@ -42,4 +42,10 @@ export const LanguageOption = styled.li`
   font-weight: 500;
   color: wheat;
   padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s;
+  
+  &:hover{
+    color: ${DESIGN_CONST.dropDown.borderColor};
+  }
 `

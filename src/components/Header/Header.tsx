@@ -1,11 +1,19 @@
-import {HeaderBurgerBtn, HeaderList, HeaderListItem, HeaderMobileOverlay, HeaderStyled} from "./HeaderStyled.ts";
+import {
+    CloseCross,
+    HeaderBurgerBtn,
+    HeaderList,
+    HeaderListItem,
+    HeaderMobileOverlay,
+    HeaderStyled
+} from "./HeaderStyled.ts";
 import {Link} from "react-router-dom";
 import LangDropDown from "../LangDropDown/LangDropDown.tsx";
 import {HeaderTexts} from "./HeaderTexts.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {IMainStore} from "../../store.ts";
 
-import burger from "../../assets/img/hamburger.svg"
+import burger from "../../assets/img/hamburger.svg";
+import cross from "../../assets/img/close.svg"
 import {toggleMobileOverlayMenu} from "../../ducks/appInfo";
 
 
@@ -21,6 +29,9 @@ export const Header = () => {
             </HeaderBurgerBtn>
             {mobileMenuShown &&
                 <HeaderMobileOverlay>
+                    <CloseCross onClick = {() => {dispatch(toggleMobileOverlayMenu())}}>
+                        <img src={cross} alt = "close" />
+                    </CloseCross>
                     burger overlay
                 </HeaderMobileOverlay>}
         </HeaderStyled>

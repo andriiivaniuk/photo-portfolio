@@ -45,14 +45,23 @@ export const HeaderMobileOverlay = styled.aside`
   //transition: 0.2s;
 
   @keyframes roll-in {
-    0% {margin-left: 10rem;}
-    50% {margin-left: 5rem;}
-    100% {margin-left: 0;}
+    0% {
+      margin-left: 30px;
+      opacity: 0.1;
+    }
+    50% {
+      margin-left: 15px;
+      opacity: 0.5;
+    }
+    100% {
+      margin-left: 0;
+      opacity: 0.9;
+    }
   }
 
-  animation: roll-in;
-  animation-duration: 0.5s;
+  animation: roll-in 0.1s;
   animation-iteration-count: 1;
+  animation-timing-function: linear;
 `
 
 export const HeaderBurgerBtn = styled.div`
@@ -63,4 +72,15 @@ export const HeaderBurgerBtn = styled.div`
     display: block;
     cursor: pointer;
   }
+`
+
+export const CloseCross = styled.div`
+  display: block;
+  height: 15px;
+  width: 15px;
+  
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  cursor: pointer;
 `
